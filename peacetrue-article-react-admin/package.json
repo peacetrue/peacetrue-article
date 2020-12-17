@@ -1,0 +1,12 @@
+{
+  "name": "peacetrue-article",
+  "version": "0.1.0",
+  "description": "文章",
+  "files": [
+    "src/modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peacetrue/peacetrue-article.git"
+  }
+}

@@ -1,0 +1,11 @@
+description '文章控制器'
+
+dependencies {
+    api project(":peacetrue-article-service-api")
+    implementation "com.github.peacetrue:peacetrue-spring"
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "org.springframework.data:spring-data-commons"
+
+    testImplementation project(':peacetrue-article-service-impl')
+    testImplementation project(path: ':peacetrue-article-service-impl', configuration: 'testArtifacts')
+}
