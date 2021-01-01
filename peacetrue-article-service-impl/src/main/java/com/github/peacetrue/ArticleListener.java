@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.PayloadApplicationEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.util.StringUtils;
 import reactor.core.scheduler.Schedulers;
 
 /**
@@ -21,9 +22,11 @@ public class ArticleListener {
     @EventListener
     public void setTypeCodeAfterArticleAdd(PayloadApplicationEvent<ArticleAdd> event) {
         ArticleVO source = (ArticleVO) event.getSource();
-        log.info("新增文章[{}]后，设置文章类别", source.getId());
-        dictionaryValueRepository.setCodePropertyValue(BeanUtils.map(source, Article.class), "typeId")
-                .publishOn(Schedulers.elastic())
-                .subscribe();
+        if (StringUtils.isEmpty(source.getTypeCode())) {
+            log.info("新增文章[{}]后，设置文章类别", source.getId());
+            dictionaryValueRepository.setCodePropertyValue(BeanUtils.map(source, Article.class), "typeId")
+                    .subscribeOn(Schedulers.boundedElastic())
+                    .subscribe();
+        }
     }
 }
