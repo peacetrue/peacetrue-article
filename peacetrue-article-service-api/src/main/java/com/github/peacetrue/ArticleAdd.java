@@ -23,7 +23,6 @@ public class ArticleAdd extends OperatorCapableImpl<Long> {
     @NotNull
     private Long typeId;
     /** 类型编码 */
-    @NotNull
     @Size(min = 1, max = 32)
     private String typeCode;
     /** 封面 */
