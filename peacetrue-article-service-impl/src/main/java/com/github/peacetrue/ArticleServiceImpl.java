@@ -60,10 +60,8 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     public Mono<ArticleVO> add(ArticleAdd params) {
         log.info("新增文章信息[{}]", params);
-        if (params.getSerialNumber() == null) params.setSerialNumber(0L);
-        if (params.getRemark() == null) params.setRemark("");
+        BeanUtils.setDefaultValue(params);
         Article entity = BeanUtils.map(params, Article.class);
-        entity.setTypeCode("");
         entity.setCreatorId(params.getOperatorId());
         entity.setCreatedTime(LocalDateTime.now());
         entity.setModifierId(entity.getCreatorId());

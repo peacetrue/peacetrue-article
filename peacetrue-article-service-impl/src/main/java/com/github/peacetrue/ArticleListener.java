@@ -23,7 +23,7 @@ public class ArticleListener {
         ArticleVO source = (ArticleVO) event.getSource();
         log.info("新增文章[{}]后，设置文章类别", source.getId());
         dictionaryValueRepository.setCodePropertyValue(BeanUtils.map(source, Article.class), "typeId")
-                .publishOn(Schedulers.elastic())
+                .subscribeOn(Schedulers.boundedElastic())
                 .subscribe();
     }
 }

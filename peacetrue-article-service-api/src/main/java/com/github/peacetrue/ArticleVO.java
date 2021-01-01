@@ -40,4 +40,13 @@ public class ArticleVO implements Serializable, IdCapable<Long> {
     private Long modifierId;
     /** 修改时间 */
     private LocalDateTime modifiedTime;
+
+    /** 来源 */
+    private String source;
+    /** 文本 */
+    private String textWriter;
+    /** 摄影 */
+    private String photographer;
+    /** 编辑 */
+    private String editor;
 }

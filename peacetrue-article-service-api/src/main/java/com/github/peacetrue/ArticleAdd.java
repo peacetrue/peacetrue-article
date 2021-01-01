@@ -48,4 +48,20 @@ public class ArticleAdd extends OperatorCapableImpl<Long> {
     /** 序号 */
     private Long serialNumber;
 
+    /** 来源 */
+    @NotNull
+    @Size(min = 1, max = 32)
+    private String source;
+    /** 文本 */
+    @NotNull
+    @Size(min = 1, max = 32)
+    private String textWriter;
+    /** 摄影 */
+    @NotNull
+    @Size(min = 1, max = 32)
+    private String photographer;
+    /** 编辑 */
+    @NotNull
+    @Size(min = 1, max = 32)
+    private String editor;
 }
