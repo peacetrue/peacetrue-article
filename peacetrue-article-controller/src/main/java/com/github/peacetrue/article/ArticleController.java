@@ -1,5 +1,6 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
+import com.github.peacetrue.article.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/articles")
+@RequestMapping(value = "/articles3")
 public class ArticleController {
 
     @Autowired

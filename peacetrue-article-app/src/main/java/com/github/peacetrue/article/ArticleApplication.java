@@ -1,4 +1,4 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.peacetrue.spring.formatter.date.AutomaticDateFormatter;

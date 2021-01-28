@@ -1,4 +1,4 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

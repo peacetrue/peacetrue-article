@@ -1,4 +1,4 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "peacetrue.article")
+@ConfigurationProperties(prefix = "peacetrue.article3")
 public class ControllerArticleProperties {
 
 }

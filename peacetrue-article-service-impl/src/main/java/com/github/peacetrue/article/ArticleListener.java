@@ -1,4 +1,4 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import com.github.peacetrue.dictionary.modules.dictionaryvalue.DictionaryValueRepository;
 import com.github.peacetrue.spring.util.BeanUtils;

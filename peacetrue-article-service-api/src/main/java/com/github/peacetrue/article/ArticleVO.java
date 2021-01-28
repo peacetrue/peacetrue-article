@@ -1,28 +1,20 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import com.github.peacetrue.core.IdCapable;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.data.annotation.Id;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 文章实体类
- *
  * @author xiayx
  */
-@Getter
-@Setter
-@ToString
-public class Article implements Serializable, IdCapable<Long> {
+@Data
+public class ArticleVO implements Serializable, IdCapable<Long> {
 
     private static final long serialVersionUID = 0L;
 
     /** 主键 */
-    @Id
     private Long id;
     /** 类型. descriptiveType */
     private Long typeId;
@@ -30,12 +22,10 @@ public class Article implements Serializable, IdCapable<Long> {
     private String typeCode;
     /** 封面 */
     private String cover;
+    /** 封面链接 */
+    private String coverUrl;
     /** 标题 */
     private String title;
-    /** 简介 */
-    private String intro;
-    /** 详情 */
-    private String detail;
     /** 备注 */
     private String remark;
     /** 序号 */
@@ -48,13 +38,4 @@ public class Article implements Serializable, IdCapable<Long> {
     private Long modifierId;
     /** 修改时间 */
     private LocalDateTime modifiedTime;
-
-    /** 来源 */
-    private String source;
-    /** 文本 */
-    private String textWriter;
-    /** 摄影 */
-    private String photographer;
-    /** 编辑 */
-    private String editor;
 }

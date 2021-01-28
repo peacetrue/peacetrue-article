@@ -1,10 +1,10 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import com.github.peacetrue.core.OperatorCapableImpl;
 import lombok.*;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
 
 /**
  * @author xiayx
@@ -14,11 +14,12 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleGet extends OperatorCapableImpl<Long> {
+public class ArticleDelete extends OperatorCapableImpl<Long> {
 
     private static final long serialVersionUID = 0L;
 
     @NotNull
+    @Min(1)
     private Long id;
 
 }

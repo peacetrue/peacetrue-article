@@ -1,5 +1,6 @@
 package com.github.peacetrue;
 
+import com.github.peacetrue.article.ControllerArticleAutoConfiguration;
 import com.github.peacetrue.spring.formatter.date.AutomaticDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateTimeFormatter;

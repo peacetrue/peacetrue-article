@@ -1,4 +1,4 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
 import com.github.peacetrue.core.IdCapable;
 import com.github.peacetrue.core.OperatorCapable;

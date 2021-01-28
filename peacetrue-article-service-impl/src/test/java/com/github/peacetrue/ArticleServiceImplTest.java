@@ -1,5 +1,6 @@
 package com.github.peacetrue;
 
+import com.github.peacetrue.article.*;
 import com.github.peacetrue.spring.util.BeanUtils;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.*;

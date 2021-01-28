@@ -1,5 +1,6 @@
-package com.github.peacetrue;
+package com.github.peacetrue.article;
 
+import com.github.peacetrue.article.*;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
