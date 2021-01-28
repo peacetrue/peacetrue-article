@@ -22,12 +22,10 @@ public class ArticleVO implements Serializable, IdCapable<Long> {
     private String typeCode;
     /** 封面 */
     private String cover;
+    /** 封面链接 */
+    private String coverUrl;
     /** 标题 */
     private String title;
-    /** 简介 */
-    private String intro;
-    /** 详情 */
-    private String detail;
     /** 备注 */
     private String remark;
     /** 序号 */
@@ -40,13 +38,4 @@ public class ArticleVO implements Serializable, IdCapable<Long> {
     private Long modifierId;
     /** 修改时间 */
     private LocalDateTime modifiedTime;
-
-    /** 来源 */
-    private String source;
-    /** 文本 */
-    private String textWriter;
-    /** 摄影 */
-    private String photographer;
-    /** 编辑 */
-    private String editor;
 }

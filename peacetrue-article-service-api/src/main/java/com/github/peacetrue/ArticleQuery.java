@@ -29,10 +29,6 @@ public class ArticleQuery extends OperatorCapableImpl<Long> {
     private String cover;
     /** 标题 */
     private String title;
-    /** 简介 */
-    private String intro;
-    /** 详情 */
-    private String detail;
     /** 备注 */
     private String remark;
     /** 序号 */

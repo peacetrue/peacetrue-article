@@ -34,29 +34,10 @@ public class ArticleModify extends OperatorCapableImpl<Long> implements IdCapabl
     /** 标题 */
     @Size(min = 1, max = 32)
     private String title;
-    /** 简介 */
-    @Size(min = 1, max = 255)
-    private String intro;
-    /** 详情 */
-    @Size(min = 1, max = 20480)
-    private String detail;
     /** 备注 */
     @Size(min = 1, max = 255)
     private String remark;
     /** 序号 */
     private Long serialNumber;
-
-    /** 来源 */
-    @Size(min = 1, max = 32)
-    private String source;
-    /** 文本 */
-    @Size(min = 1, max = 32)
-    private String textWriter;
-    /** 摄影 */
-    @Size(min = 1, max = 32)
-    private String photographer;
-    /** 编辑 */
-    @Size(min = 1, max = 32)
-    private String editor;
 
 }
