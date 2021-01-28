@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/articles3")
+@RequestMapping(value = "/articles")
 public class ArticleController {
 
     @Autowired

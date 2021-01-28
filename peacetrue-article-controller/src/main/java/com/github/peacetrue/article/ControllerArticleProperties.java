@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "peacetrue.article3")
+@ConfigurationProperties(prefix = "peacetrue.article")
 public class ControllerArticleProperties {
 
 }
