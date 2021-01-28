@@ -20,8 +20,8 @@ buildscript {
 
 allprojects { project ->
 
-    group "com.github.peacetrue.article"
-    version "3.1.0-SNAPSHOT"
+    group "com.github.peacetrue.article3"
+    version "1.0.0-SNAPSHOT"
     description "文章"
 
     apply plugin: "java-library"
