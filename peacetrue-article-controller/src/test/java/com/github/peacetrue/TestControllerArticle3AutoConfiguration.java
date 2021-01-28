@@ -1,6 +1,6 @@
 package com.github.peacetrue;
 
-import com.github.peacetrue.article.ControllerArticleAutoConfiguration;
+import com.github.peacetrue.article.ControllerArticle3AutoConfiguration;
 import com.github.peacetrue.spring.formatter.date.AutomaticDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateFormatter;
 import com.github.peacetrue.spring.formatter.date.AutomaticLocalDateTimeFormatter;
@@ -25,15 +25,15 @@ import org.springframework.web.reactive.result.method.annotation.ArgumentResolve
  */
 @Configuration
 @ImportAutoConfiguration(classes = {
-        TestServiceArticleAutoConfiguration.class,
+        TestServiceArticle3AutoConfiguration.class,
         WebMvcAutoConfiguration.class,
         HttpMessageConvertersAutoConfiguration.class,
-        ControllerArticleAutoConfiguration.class,
+        ControllerArticle3AutoConfiguration.class,
         SpringDataWebAutoConfiguration.class,
 })
 @EnableAutoConfiguration
 @ActiveProfiles("article-controller-test")
-public class TestControllerArticleAutoConfiguration {
+public class TestControllerArticle3AutoConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @Order(Ordered.HIGHEST_PRECEDENCE)

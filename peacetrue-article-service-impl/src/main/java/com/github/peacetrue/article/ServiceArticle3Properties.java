@@ -1,17 +1,13 @@
 package com.github.peacetrue.article;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 控制器配置
- *
  * @author xiayx
  */
-@Getter
-@Setter
+@Data
 @ConfigurationProperties(prefix = "peacetrue.article")
-public class ControllerArticleProperties {
+public class ServiceArticle3Properties {
 
 }

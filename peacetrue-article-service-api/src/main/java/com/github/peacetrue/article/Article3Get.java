@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleGet extends OperatorCapableImpl<Long> {
+public class Article3Get extends OperatorCapableImpl<Long> {
 
     private static final long serialVersionUID = 0L;
 

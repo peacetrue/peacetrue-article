@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.peacetrue.article.ControllerArticleAutoConfiguration
+  com.github.peacetrue.article.ControllerArticle3AutoConfiguration

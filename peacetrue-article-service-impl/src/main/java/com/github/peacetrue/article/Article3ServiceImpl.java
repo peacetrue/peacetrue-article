@@ -33,14 +33,14 @@ import java.util.Collections;
  */
 @Slf4j
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class Article3ServiceImpl implements Article3Service {
 
     @Autowired
     private R2dbcEntityOperations entityOperations;
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    public static Criteria buildCriteria(ArticleQuery params) {
+    public static Criteria buildCriteria(Article3Query params) {
         return CriteriaUtils.and(
                 CriteriaUtils.nullableCriteria(CriteriaUtils.smartIn("id"), params::getId),
                 CriteriaUtils.nullableCriteria(Criteria.where("typeId")::is, params::getTypeId),
@@ -58,34 +58,34 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @Transactional
-    public Mono<ArticleVO> add(ArticleAdd params) {
+    public Mono<Article3VO> add(Article3Add params) {
         log.info("新增文章信息[{}]", params);
         BeanUtils.setDefaultValue(params);
-        Article entity = BeanUtils.map(params, Article.class);
+        Article3 entity = BeanUtils.map(params, Article3.class);
         entity.setCreatorId(params.getOperatorId());
         entity.setCreatedTime(LocalDateTime.now());
         entity.setModifierId(entity.getCreatorId());
         entity.setModifiedTime(entity.getCreatedTime());
         return entityOperations.insert(entity)
-                .map(item -> BeanUtils.map(item, ArticleVO.class))
+                .map(item -> BeanUtils.map(item, Article3VO.class))
                 .doOnNext(item -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(item, params)));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Mono<Page<ArticleVO>> query(ArticleQuery params, @Nullable Pageable pageable, String... projection) {
+    public Mono<Page<Article3VO>> query(Article3Query params, @Nullable Pageable pageable, String... projection) {
         log.info("分页查询文章信息[{}]", params);
         if (params.getCreatedTime() == null) params.setCreatedTime(Range.LocalDateTime.DEFAULT);
         if (params.getModifiedTime() == null) params.setModifiedTime(Range.LocalDateTime.DEFAULT);
         Pageable finalPageable = pageable == null ? PageRequest.of(0, 10) : pageable;
         Criteria where = buildCriteria(params);
 
-        return entityOperations.count(Query.query(where), Article.class)
+        return entityOperations.count(Query.query(where), Article3.class)
                 .flatMap(total -> total == 0L ? Mono.empty() : Mono.just(total))
-                .<Page<ArticleVO>>flatMap(total -> {
+                .<Page<Article3VO>>flatMap(total -> {
                     Query query = Query.query(where).with(finalPageable).sort(finalPageable.getSortOr(Sort.by("serialNumber")));
-                    return entityOperations.select(query, Article.class)
-                            .map(item -> BeanUtils.map(item, ArticleVO.class))
+                    return entityOperations.select(query, Article3.class)
+                            .map(item -> BeanUtils.map(item, Article3VO.class))
                             .collectList()
                             .doOnNext(item -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(item, params)))
                             .map(item -> new PageImpl<>(item, finalPageable, total));
@@ -95,36 +95,36 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @Transactional(readOnly = true)
-    public Flux<ArticleVO> query(ArticleQuery params, @Nullable Sort sort, String... projection) {
+    public Flux<Article3VO> query(Article3Query params, @Nullable Sort sort, String... projection) {
         log.info("全量查询文章信息[{}]", params);
         if (params.getCreatedTime() == null) params.setCreatedTime(Range.LocalDateTime.DEFAULT);
         if (params.getModifiedTime() == null) params.setModifiedTime(Range.LocalDateTime.DEFAULT);
         if (sort == null) sort = Sort.by("serialNumber");
         Criteria where = buildCriteria(params);
         Query query = Query.query(where).sort(sort).limit(100);
-        return entityOperations.select(query, Article.class)
-                .map(item -> BeanUtils.map(item, ArticleVO.class))
+        return entityOperations.select(query, Article3.class)
+                .map(item -> BeanUtils.map(item, Article3VO.class))
                 .doOnNext(item -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(item, params)))
                 ;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Mono<ArticleVO> get(ArticleGet params, String... projection) {
+    public Mono<Article3VO> get(Article3Get params, String... projection) {
         log.info("获取文章信息[{}]", params);
 //        Criteria where = CriteriaUtils.and(
 //                CriteriaUtils.nullableCriteria(Criteria.where("id")::is, params::getId),
 //        );
         Criteria where = Criteria.where("id").is(params.getId());
-        return entityOperations.selectOne(Query.query(where), Article.class)
-                .map(item -> BeanUtils.map(item, ArticleVO.class))
+        return entityOperations.selectOne(Query.query(where), Article3.class)
+                .map(item -> BeanUtils.map(item, Article3VO.class))
                 .doOnNext(item -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(item, params)))
                 ;
     }
 
     @Override
     @Transactional
-    public Mono<Integer> modify(ArticleModify params) {
+    public Mono<Integer> modify(Article3Modify params) {
         log.info("修改文章信息[{}]", params);
         return this.modifyGeneric(params);
     }
@@ -132,16 +132,16 @@ public class ArticleServiceImpl implements ArticleService {
     private <T extends IdCapable<Long> & OperatorCapable<Long>> Mono<Integer> modifyGeneric(T params) {
         Criteria where = Criteria.where("id").is(params.getId());
         Query idQuery = Query.query(where);
-        return entityOperations.selectOne(idQuery, Article.class)
+        return entityOperations.selectOne(idQuery, Article3.class)
                 .zipWhen(entity -> {
-                    Article modify = BeanUtils.map(params, Article.class);
+                    Article3 modify = BeanUtils.map(params, Article3.class);
                     modify.setModifierId(params.getOperatorId());
                     modify.setModifiedTime(LocalDateTime.now());
                     Update update = UpdateUtils.selectiveUpdateFromExample(modify);
-                    return entityOperations.update(idQuery, update, Article.class);
+                    return entityOperations.update(idQuery, update, Article3.class);
                 })
                 .map(tuple2 -> {
-                    ArticleVO vo = BeanUtils.map(tuple2.getT1(), ArticleVO.class);
+                    Article3VO vo = BeanUtils.map(tuple2.getT1(), Article3VO.class);
                     BeanUtils.copyProperties(params, vo, BeanUtils.EMPTY_PROPERTY_VALUE);
                     eventPublisher.publishEvent(new PayloadApplicationEvent<>(vo, params));
                     return tuple2.getT2();
@@ -151,13 +151,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     @Transactional
-    public Mono<Integer> delete(ArticleDelete params) {
+    public Mono<Integer> delete(Article3Delete params) {
         log.info("删除文章信息[{}]", params);
         Criteria where = Criteria.where("id").is(params.getId());
         Query idQuery = Query.query(where);
-        return entityOperations.selectOne(idQuery, Article.class)
-                .map(item -> BeanUtils.map(item, ArticleVO.class))
-                .zipWhen(region -> entityOperations.delete(idQuery, Article.class))
+        return entityOperations.selectOne(idQuery, Article3.class)
+                .map(item -> BeanUtils.map(item, Article3VO.class))
+                .zipWhen(region -> entityOperations.delete(idQuery, Article3.class))
                 .doOnNext(tuple2 -> eventPublisher.publishEvent(new PayloadApplicationEvent<>(tuple2.getT1(), params)))
                 .map(Tuple2::getT2)
                 .switchIfEmpty(Mono.just(0));

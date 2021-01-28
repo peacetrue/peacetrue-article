@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Article implements Serializable, IdCapable<Long> {
+public class Article3 implements Serializable, IdCapable<Long> {
 
     private static final long serialVersionUID = 0L;
 

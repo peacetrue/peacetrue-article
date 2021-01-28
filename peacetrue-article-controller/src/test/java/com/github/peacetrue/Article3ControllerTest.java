@@ -1,7 +1,7 @@
 package com.github.peacetrue;
 
-import com.github.peacetrue.article.ArticleModify;
-import com.github.peacetrue.article.ArticleVO;
+import com.github.peacetrue.article.Article3Modify;
+import com.github.peacetrue.article.Article3VO;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,10 +17,10 @@ import java.util.function.Consumer;
 /**
  * @author xiayx
  */
-@SpringBootTest(classes = TestControllerArticleAutoConfiguration.class)
+@SpringBootTest(classes = TestControllerArticle3AutoConfiguration.class)
 @AutoConfigureWebTestClient
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ArticleControllerTest {
+public class Article3ControllerTest {
 
     @Autowired
     private WebTestClient client;
@@ -28,20 +28,20 @@ public class ArticleControllerTest {
     @Test
     @Order(10)
     public void add() {
-        this.client.post().uri("/articles")
-                .bodyValue(ArticleServiceImplTest.ADD)
+        this.client.post().uri("/articles3")
+                .bodyValue(Article3ServiceImplTest.ADD)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBody(ArticleVO.class).value((Consumer<ArticleVO>) vo -> ArticleServiceImplTest.vo = vo);
+                .expectBody(Article3VO.class).value((Consumer<Article3VO>) vo -> Article3ServiceImplTest.vo = vo);
     }
 
     @Test
     @Order(20)
     public void queryForPage() {
         this.client.get()
-                .uri("/articles?page=0")
+                .uri("/articles3?page=0")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -53,7 +53,7 @@ public class ArticleControllerTest {
     @Order(30)
     public void queryForList() {
         this.client.get()
-                .uri("/articles")
+                .uri("/articles3")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -65,22 +65,22 @@ public class ArticleControllerTest {
     @Order(40)
     public void get() {
         this.client.get()
-                .uri("/articles/{0}", ArticleServiceImplTest.vo.getId())
+                .uri("/articles3/{0}", Article3ServiceImplTest.vo.getId())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBody(ArticleVO.class).isEqualTo(ArticleServiceImplTest.vo);
+                .expectBody(Article3VO.class).isEqualTo(Article3ServiceImplTest.vo);
     }
 
 
     @Test
     @Order(50)
     public void modify() {
-        ArticleModify modify = ArticleServiceImplTest.MODIFY;
-        modify.setId(ArticleServiceImplTest.vo.getId());
+        Article3Modify modify = Article3ServiceImplTest.MODIFY;
+        modify.setId(Article3ServiceImplTest.vo.getId());
         this.client.put()
-                .uri("/articles/{id}", ArticleServiceImplTest.vo.getId())
+                .uri("/articles3/{id}", Article3ServiceImplTest.vo.getId())
                 .bodyValue(modify)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
@@ -93,7 +93,7 @@ public class ArticleControllerTest {
     @Order(60)
     public void delete() {
         this.client.delete()
-                .uri("/articles/{0}", ArticleServiceImplTest.vo.getId())
+                .uri("/articles3/{0}", Article3ServiceImplTest.vo.getId())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()

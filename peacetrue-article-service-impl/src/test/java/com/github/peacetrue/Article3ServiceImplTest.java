@@ -14,14 +14,14 @@ import reactor.test.StepVerifier;
  * @author : xiayx
  * @since : 2020-05-22 16:43
  **/
-@SpringBootTest(classes = TestServiceArticleAutoConfiguration.class)
+@SpringBootTest(classes = TestServiceArticle3AutoConfiguration.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ArticleServiceImplTest {
+class Article3ServiceImplTest {
 
     public static final EasyRandom EASY_RANDOM = new EasyRandom();
-    public static final ArticleAdd ADD = EASY_RANDOM.nextObject(ArticleAdd.class);
-    public static final ArticleModify MODIFY = EASY_RANDOM.nextObject(ArticleModify.class);
-    public static ArticleVO vo;
+    public static final Article3Add ADD = EASY_RANDOM.nextObject(Article3Add.class);
+    public static final Article3Modify MODIFY = EASY_RANDOM.nextObject(Article3Modify.class);
+    public static Article3VO vo;
 
     static {
         ADD.setOperatorId(EASY_RANDOM.nextObject(Long.class));
@@ -29,7 +29,7 @@ class ArticleServiceImplTest {
     }
 
     @Autowired
-    private ArticleServiceImpl service;
+    private Article3ServiceImpl service;
 
     @Test
     @Order(10)
@@ -46,7 +46,7 @@ class ArticleServiceImplTest {
     @Test
     @Order(20)
     void queryForPage() {
-        ArticleQuery params = BeanUtils.map(vo, ArticleQuery.class);
+        Article3Query params = BeanUtils.map(vo, Article3Query.class);
         service.query(params, PageRequest.of(0, 10))
                 .as(StepVerifier::create)
                 .assertNext(page -> Assertions.assertEquals(1, page.getTotalElements()))
@@ -56,7 +56,7 @@ class ArticleServiceImplTest {
     @Test
     @Order(30)
     void queryForList() {
-        ArticleQuery params = BeanUtils.map(vo, ArticleQuery.class);
+        Article3Query params = BeanUtils.map(vo, Article3Query.class);
         service.query(params)
                 .as(StepVerifier::create)
                 .expectNextCount(1)
@@ -66,7 +66,7 @@ class ArticleServiceImplTest {
     @Test
     @Order(40)
     void get() {
-        ArticleGet params = BeanUtils.map(vo, ArticleGet.class);
+        Article3Get params = BeanUtils.map(vo, Article3Get.class);
         service.get(params)
                 .as(StepVerifier::create)
                 .assertNext(item -> Assertions.assertEquals(vo.getId(), item.getId()))
@@ -76,7 +76,7 @@ class ArticleServiceImplTest {
     @Test
     @Order(50)
     void modify() {
-        ArticleModify params = MODIFY;
+        Article3Modify params = MODIFY;
         params.setId(vo.getId());
         service.modify(params)
                 .as(StepVerifier::create)
@@ -87,7 +87,7 @@ class ArticleServiceImplTest {
     @Test
     @Order(60)
     void delete() {
-        ArticleDelete params = new ArticleDelete(vo.getId());
+        Article3Delete params = new Article3Delete(vo.getId());
         service.delete(params)
                 .as(StepVerifier::create)
                 .expectNext(1)

@@ -14,10 +14,10 @@ import org.springframework.data.web.ReactiveSortHandlerMethodArgumentResolver;
  * @author xiayx
  */
 @Configuration
-@EnableConfigurationProperties(ControllerArticleProperties.class)
-@ComponentScan(basePackageClasses = ControllerArticleAutoConfiguration.class)
-@PropertySource("classpath:/application-article-controller.yml")
-public class ControllerArticleAutoConfiguration {
+@EnableConfigurationProperties(ControllerArticle3Properties.class)
+@ComponentScan(basePackageClasses = ControllerArticle3AutoConfiguration.class)
+@PropertySource("classpath:/application-article3-controller.yml")
+public class ControllerArticle3AutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(ReactivePageableHandlerMethodArgumentResolver.class)

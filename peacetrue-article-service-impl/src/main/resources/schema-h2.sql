@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS article;
-CREATE TABLE article
+DROP TABLE IF EXISTS article3;
+CREATE TABLE article3
 (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     type_id       bigint                            not null comment '类型. descriptiveType',

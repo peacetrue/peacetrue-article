@@ -1,6 +1,5 @@
 package com.github.peacetrue.article;
 
-import com.github.peacetrue.core.IdCapable;
 import com.github.peacetrue.core.OperatorCapableImpl;
 import lombok.*;
 
@@ -16,22 +15,22 @@ import javax.validation.constraints.Size;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArticleModify extends OperatorCapableImpl<Long> implements IdCapable<Long> {
+public class Article3Add extends OperatorCapableImpl<Long> {
 
     private static final long serialVersionUID = 0L;
 
-    /** 主键 */
-    @NotNull
-    private Long id;
     /** 类型. descriptiveType */
+    @NotNull
     private Long typeId;
     /** 类型编码 */
     @Size(min = 1, max = 32)
     private String typeCode;
     /** 封面 */
+    @NotNull
     @Size(min = 1, max = 255)
     private String cover;
     /** 标题 */
+    @NotNull
     @Size(min = 1, max = 32)
     private String title;
     /** 备注 */

@@ -26,8 +26,8 @@ import org.springframework.test.context.ActiveProfiles;
         R2dbcTransactionManagerAutoConfiguration.class,
 })
 @EnableAutoConfiguration
-@ActiveProfiles("article-service-test")
-public class TestServiceArticleAutoConfiguration {
+@ActiveProfiles("article3-service-test")
+public class TestServiceArticle3AutoConfiguration {
 
     @Autowired
     public void initializeDatabase(ConnectionFactory connectionFactory) {

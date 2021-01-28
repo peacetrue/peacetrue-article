@@ -1,41 +1,43 @@
 package com.github.peacetrue.article;
 
 import com.github.peacetrue.core.IdCapable;
-import lombok.Data;
+import com.github.peacetrue.core.OperatorCapableImpl;
+import lombok.*;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 /**
  * @author xiayx
  */
-@Data
-public class ArticleVO implements Serializable, IdCapable<Long> {
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class Article3Modify extends OperatorCapableImpl<Long> implements IdCapable<Long> {
 
     private static final long serialVersionUID = 0L;
 
     /** 主键 */
+    @NotNull
     private Long id;
     /** 类型. descriptiveType */
     private Long typeId;
     /** 类型编码 */
+    @Size(min = 1, max = 32)
     private String typeCode;
     /** 封面 */
+    @Size(min = 1, max = 255)
     private String cover;
-    /** 封面链接 */
-    private String coverUrl;
     /** 标题 */
+    @Size(min = 1, max = 32)
     private String title;
     /** 备注 */
+    @Size(min = 1, max = 255)
     private String remark;
     /** 序号 */
     private Long serialNumber;
-    /** 创建者主键 */
-    private Long creatorId;
-    /** 创建时间 */
-    private LocalDateTime createdTime;
-    /** 修改者主键 */
-    private Long modifierId;
-    /** 修改时间 */
-    private LocalDateTime modifiedTime;
+
 }

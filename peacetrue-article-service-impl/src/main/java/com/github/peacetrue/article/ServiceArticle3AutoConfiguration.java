@@ -19,14 +19,14 @@ import java.util.Objects;
  * @author xiayx
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties(ServiceArticleProperties.class)
-@ComponentScan(basePackageClasses = ServiceArticleAutoConfiguration.class)
-@PropertySource("classpath:/application-article-service.yml")
-public class ServiceArticleAutoConfiguration {
+@EnableConfigurationProperties(ServiceArticle3Properties.class)
+@ComponentScan(basePackageClasses = ServiceArticle3AutoConfiguration.class)
+@PropertySource("classpath:/application-article3-service.yml")
+public class ServiceArticle3AutoConfiguration {
 
-    private ServiceArticleProperties properties;
+    private ServiceArticle3Properties properties;
 
-    public ServiceArticleAutoConfiguration(ServiceArticleProperties properties) {
+    public ServiceArticle3AutoConfiguration(ServiceArticle3Properties properties) {
         this.properties = Objects.requireNonNull(properties);
     }
 
@@ -41,8 +41,8 @@ public class ServiceArticleAutoConfiguration {
     public static class DictionaryValueDependency {
         @Bean
         @ConditionalOnBean(DictionaryValueRepository.class)
-        public ArticleListener articleListener() {
-            return new ArticleListener();
+        public Article3Listener articleListener() {
+            return new Article3Listener();
         }
     }
 }

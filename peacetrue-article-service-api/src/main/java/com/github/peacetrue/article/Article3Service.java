@@ -13,29 +13,29 @@ import javax.annotation.Nullable;
  *
  * @author xiayx
  */
-public interface ArticleService {
+public interface Article3Service {
 
     /** 新增 */
-    Mono<ArticleVO> add(ArticleAdd params);
+    Mono<Article3VO> add(Article3Add params);
 
     /** 分页查询 */
-    Mono<Page<ArticleVO>> query(@Nullable ArticleQuery params, @Nullable Pageable pageable, String... projection);
+    Mono<Page<Article3VO>> query(@Nullable Article3Query params, @Nullable Pageable pageable, String... projection);
 
     /** 全量查询 */
-    Flux<ArticleVO> query(ArticleQuery params, @Nullable Sort sort, String... projection);
+    Flux<Article3VO> query(Article3Query params, @Nullable Sort sort, String... projection);
 
     /** 全量查询 */
-    default Flux<ArticleVO> query(ArticleQuery params, String... projection) {
+    default Flux<Article3VO> query(Article3Query params, String... projection) {
         return this.query(params, (Sort) null, projection);
     }
 
     /** 获取 */
-    Mono<ArticleVO> get(ArticleGet params, String... projection);
+    Mono<Article3VO> get(Article3Get params, String... projection);
 
     /** 修改 */
-    Mono<Integer> modify(ArticleModify params);
+    Mono<Integer> modify(Article3Modify params);
 
     /** 删除 */
-    Mono<Integer> delete(ArticleDelete params);
+    Mono<Integer> delete(Article3Delete params);
 
 }
