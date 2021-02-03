@@ -1,8 +1,5 @@
 package com.github.peacetrue.article;
 
-import com.github.peacetrue.dictionary.modules.dictionaryvalue.DictionaryValueRepository;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -34,15 +31,5 @@ public class ServiceArticleAutoConfiguration {
     @ConditionalOnMissingBean(R2dbcEntityOperations.class)
     public R2dbcEntityTemplate r2dbcEntityTemplate(DatabaseClient databaseClient) {
         return new R2dbcEntityTemplate(databaseClient);
-    }
-
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass(DictionaryValueRepository.class)
-    public static class DictionaryValueDependency {
-        @Bean
-        @ConditionalOnBean(DictionaryValueRepository.class)
-        public ArticleListener articleListener() {
-            return new ArticleListener();
-        }
     }
 }
