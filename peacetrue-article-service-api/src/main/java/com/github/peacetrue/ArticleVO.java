@@ -22,6 +22,8 @@ public class ArticleVO implements Serializable, IdCapable<Long> {
     private String typeCode;
     /** 封面 */
     private String cover;
+    /** 封面地址 */
+    private String coverUrl;
     /** 标题 */
     private String title;
     /** 简介 */
