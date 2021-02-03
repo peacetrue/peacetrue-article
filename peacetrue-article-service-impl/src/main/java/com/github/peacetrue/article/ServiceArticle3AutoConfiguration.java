@@ -36,13 +36,4 @@ public class ServiceArticle3AutoConfiguration {
         return new R2dbcEntityTemplate(databaseClient);
     }
 
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass(DictionaryValueRepository.class)
-    public static class DictionaryValueDependency {
-        @Bean
-        @ConditionalOnBean(DictionaryValueRepository.class)
-        public Article3Listener articleListener() {
-            return new Article3Listener();
-        }
-    }
 }

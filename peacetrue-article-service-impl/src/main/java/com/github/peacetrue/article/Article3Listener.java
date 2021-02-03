@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.PayloadApplicationEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import reactor.core.scheduler.Schedulers;
 
@@ -14,6 +15,7 @@ import reactor.core.scheduler.Schedulers;
  * @since : 2020-12-17 13:49
  **/
 @Slf4j
+@Component
 public class Article3Listener {
 
     @Autowired
